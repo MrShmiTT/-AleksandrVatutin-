@@ -40,7 +40,7 @@
     <profile>
       <id>hw1-mult-and-div-calculator-test-suite</id>
       <properties>
-      <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
   </profiles>

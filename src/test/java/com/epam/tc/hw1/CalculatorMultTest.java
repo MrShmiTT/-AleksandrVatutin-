@@ -2,25 +2,20 @@ package com.epam.tc.hw1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tat.module4.Calculator;
-import org.testng.annotations.DataProvider;
+import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-public class CalculatorMultTest {
+public class CalculatorMultTest extends CalculatorBaseTest {
 
-    @DataProvider(name = "TestData")
-    public Object[][] sumDataProvider() {
-        return new Object[][] {
-            {2, 2, 4},
-            {2, 3, 6},
-            {3, 3, 9}
-        };
-    }
-
-    @Test(dataProvider = "TestData")
-    public void subTest(long a, long b, long expected) {
-        Calculator calculator = new Calculator();
+    @Test(dataProvider = "MultDataLong", dataProviderClass = CalculatorDataProviders.class)
+    public void multTestLong(long a, long b, long expected) {
         long actual = calculator.mult(a, b);
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test(dataProvider = "MultDataDouble", dataProviderClass = CalculatorDataProviders.class)
+    public void multTestDouble(double a, double b, double expected) {
+        double actual = calculator.mult(a, b);
+        assertThat(actual).isEqualTo(expected, Assertions.offset(0.1d));
     }
 }
