@@ -21,31 +21,52 @@
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
   </properties>
 
-<!--  <profiles>-->
-<!--    <profile>-->
-<!--      <id>hw1-all-calculator-test-suite</id>-->
-<!--      <properties>-->
-<!--        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/AllCalculatorTestSuite.xml</suite.xml.name>-->
-<!--      </properties>-->
-<!--    </profile>-->
+  <profiles>
+    <profile>
+      <id>hw1-all-calculator-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/AllCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
-<!--    <profile>-->
-<!--      <id>hw1-sum-and-sub-calculator-test-suite</id>-->
-<!--      <activation>-->
-<!--        <activeByDefault>true</activeByDefault>-->
-<!--      </activation>-->
-<!--      <properties>-->
-<!--        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubCalculatorTestSuite.xml</suite.xml.name>-->
-<!--      </properties>-->
-<!--    </profile>-->
+    <profile>
+      <id>hw1-sum-and-sub-calculator-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
-<!--    <profile>-->
-<!--      <id>hw1-mult-and-div-calculator-test-suite</id>-->
-<!--      <properties>-->
-<!--        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--  </profiles>-->
+    <profile>
+      <id>hw1-mult-and-div-calculator-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw2-all-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HW2AllTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw2-first-exercise-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HW2FirstExerciseTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw2-second-exercise-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HW2SecondExerciseTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
@@ -110,16 +131,16 @@
         </executions>
       </plugin>
 
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-surefire-plugin</artifactId>-->
-<!--        <version>3.0.0-M5</version>-->
-<!--        <configuration>-->
-<!--          <suiteXmlFiles>-->
-<!--            <suiteXmlFile>${suite.xml.name}</suiteXmlFile>-->
-<!--          </suiteXmlFiles>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
 
     </plugins>
   </build>
