@@ -3,10 +3,6 @@
   <test name="Exercise One Test">
     <classes>
       <class name="com.epam.tc.hw2.ex1.ExerciseOneTest"></class>
-    </classes>
-  </test>
-  <test name="Exercise Two Test">
-    <classes>
       <class name="com.epam.tc.hw2.ex2.ExerciseTwoTest"></class>
     </classes>
   </test>

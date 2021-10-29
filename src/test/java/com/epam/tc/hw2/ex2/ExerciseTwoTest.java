@@ -1,8 +1,11 @@
 package com.epam.tc.hw2.ex2;
 
-import com.epam.tc.hw2.AssertsData;
+import static com.epam.tc.hw2.AssertsData.LOGS;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.epam.tc.hw2.BaseTest;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -14,7 +17,7 @@ public class ExerciseTwoTest extends BaseTest {
         //5. Open through the header menu Service -> Different Elements Page
         webDriver.findElement(By.linkText("SERVICE")).click();
         webDriver.findElement(By.linkText("DIFFERENT ELEMENTS")).click();
-        softassert.assertEquals(webDriver.getTitle(), "Different Elements");
+        assertThat(webDriver.getTitle()).isEqualTo("Different Elements");
 
         //6. Select checkboxes Water, Wind
         webDriver.findElement(By.xpath("//label[@class='label-checkbox'][1]")).click();
@@ -32,12 +35,7 @@ public class ExerciseTwoTest extends BaseTest {
         //for radio button there is a log row and value is corresponded to the status of radio button
         //for dropdown there is a log row and value is corresponded to the selected value.
         List<WebElement> logTxts = webDriver.findElements(By.xpath("//ul[@class='panel-body-list logs']/li"));
-        softassert.assertTrue(logTxts.get(0).getText().contains(AssertsData.LOG_ONE));
-        softassert.assertTrue(logTxts.get(1).getText().contains(AssertsData.LOG_TWO));
-        softassert.assertTrue(logTxts.get(2).getText().contains(AssertsData.LOG_THREE));
-        softassert.assertTrue(logTxts.get(3).getText().contains(AssertsData.LOG_FOUR));
-
-        //10. Close Browser
-        softassert.assertAll();
+        assertThat(logTxts.stream().map(e -> e.getText().substring(e.getText().indexOf(' ') + 1))
+                          .collect(Collectors.toList())).isEqualTo(LOGS);
     }
 }

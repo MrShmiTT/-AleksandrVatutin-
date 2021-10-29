@@ -13,13 +13,13 @@ import org.testng.asserts.SoftAssert;
 public class BaseTest {
 
     protected WebDriver webDriver;
-    protected SoftAssert softassert;
+    protected SoftAssert softAssert;
 
     @BeforeClass
     public void setupClass() {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
-        softassert = new SoftAssert();
+        softAssert = new SoftAssert();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
@@ -27,7 +27,7 @@ public class BaseTest {
         webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");
 
         //2. Assert Browser title
-        softassert.assertEquals(webDriver.getTitle(), "Home Page");
+        softAssert.assertEquals(webDriver.getTitle(), "Home Page");
 
         //3. Perform login
         webDriver.findElement(By.id("user-icon")).click();
@@ -35,10 +35,10 @@ public class BaseTest {
         webDriver.findElement(By.id("password")).sendKeys("Jdi1234" + Keys.ENTER);
 
         //4. Assert Username is loggined
-        softassert.assertEquals(webDriver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
+        softAssert.assertEquals(webDriver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void clear() {
         webDriver.quit();
     }
