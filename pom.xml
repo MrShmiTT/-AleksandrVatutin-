@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.epam.reaining.center</groupId>
-  <artifactId>vatutin-ht3-maven</artifactId>
+  <artifactId>vatutin-home-works-aqaj</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
@@ -14,6 +14,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <testng.version>7.4.0</testng.version>
+
+    <selenium-java.version>4.0.0</selenium-java.version>
 
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
@@ -29,9 +31,6 @@
 
     <profile>
       <id>hw1-sum-and-sub-calculator-test-suite</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubCalculatorTestSuite.xml</suite.xml.name>
       </properties>
@@ -41,6 +40,30 @@
       <id>hw1-mult-and-div-calculator-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw2-all-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HW2AllTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw2-first-exercise-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HW2FirstExerciseTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw2-second-exercise-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HW2SecondExerciseTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
   </profiles>
@@ -54,6 +77,13 @@
     </dependency>
 
     <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.21.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
       <groupId>calculator</groupId>
       <artifactId>calculator</artifactId>
       <version>1.0</version>
@@ -62,11 +92,15 @@
     </dependency>
 
     <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <!-- use 2.9.1 for Java 7 projects -->
-      <version>3.21.0</version>
-      <scope>test</scope>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium-java.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.0.3</version>
     </dependency>
   </dependencies>
 
