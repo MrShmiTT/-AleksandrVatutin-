@@ -36,45 +36,50 @@ public class ExerciseOneTest extends BaseTest {
 
         HeaderMenu headerMenu = new HeaderMenu(driver);
 
-        //5. Assert that there are 4 items on the header section are displayed, and they have proper texts
-        headerMenu.getHeaderButtons();
-        softAssert.assertTrue(headerMenu.getHeaderButtons());
+        //        5. Assert that there are 4 items on the header section are displayed, and they have proper texts
+        softAssert.assertTrue(headerMenu.areHeaderButtonsDisplayed());
         softAssert.assertEquals(headerMenu.getHeaderButtonsText(), HEADER_BUTTONS);
 
+//        softAssert.assertTrue(headerMenu.getHeaderMenu().isDisplayed());
+//        softAssert.assertEquals(headerMenu.getHeaderMenuText(), HEADER_BUTTONS);
 
-//        List<WebElement> headerButtons = driver.findElements(By.xpath("//header/div/nav/ul[1]/li"));
-//        headerButtons.forEach(button -> softAssert.assertTrue(button.isDisplayed()));
-//        softAssert.assertEquals(headerButtons.stream().map(WebElement::getText).collect(Collectors.toList()),
-//            HEADER_BUTTONS);
-//
-//        //6. Assert that there are 4 images on the Index Page, and they are displayed
-//        List<WebElement> imgs = driver.findElements(By.xpath("//div[@class='benefit-icon']"));
-//        for (WebElement img : imgs) {
-//            softAssert.assertTrue(img.isDisplayed());
-//        }
-//
-//        //7. Assert that there are 4 texts on the Index Page under icons, and they have proper text
-//        List<WebElement> imgElements = driver.findElements(By.xpath("//span[@class='benefit-txt']"));
-//        imgElements.forEach(imgText -> softAssert.assertTrue(imgText.isDisplayed()));
-//        softAssert.assertEquals(imgElements.stream().map(WebElement::getText).collect(Collectors.toList()), TEXTS);
-//
-//        //8. Assert that there is the iframe with “Frame Button” exist
-//        softAssert.assertTrue(driver.findElement(By.id("frame")).isDisplayed());
-//
-//        //9. Switch to the iframe and check that there is “Frame Button” in the iframe
-//        driver.switchTo().frame("frame");
-//        WebElement frameBtn = driver.findElement(By.cssSelector("#frame-button"));
-//        softAssert.assertEquals(frameBtn.getAttribute("value"), "Frame Button");
-//        softAssert.assertTrue(frameBtn.isDisplayed());
-//
-//        //10. Switch to original window back
-//        driver.switchTo().parentFrame();
-//
-//        //11. Assert that there are 5 items in the Left Section are displayed, and they have proper text
-//        List<WebElement> sideButtons = driver.findElements(By.xpath("//*[@id=\"mCSB_1_container\"]/ul/li"));
-//        sideButtons.forEach(button -> softAssert.assertTrue(button.isDisplayed()));
-//        softAssert.assertEquals(sideButtons.stream().map(WebElement::getText).collect(Collectors.toList()),
-//            SIDE_BUTTONS);
+        //        List<String> actualButtons = headerMenu.getHeaderButtonsText();
+        //        List<WebElement> headerButtons = driver.findElements(By.xpath("//header/div/nav/ul[1]/li"));
+        //        headerButtons.forEach(button -> softAssert.assertTrue(button.isDisplayed()));
+        //        softAssert.assertEquals(headerButtons.stream().map(WebElement::getText).collect(Collectors
+        //            .toList()), HEADER_BUTTONS);
+
+        //6. Assert that there are 4 images on the Index Page, and they are displayed
+        //        softAssert.assertTrue(headerMenu.getImages());
+
+        //        List<WebElement> imgs = driver.findElements(By.xpath("//div[@class='benefit-icon']"));
+        //        for (WebElement img : imgs) {
+        //            softAssert.assertTrue(img.isDisplayed());
+        //        }
+        //
+        //        //7. Assert that there are 4 texts on the Index Page under icons, and they have proper text
+        //        List<WebElement> imgElements = driver.findElements(By.xpath("//span[@class='benefit-txt']"));
+        //        imgElements.forEach(imgText -> softAssert.assertTrue(imgText.isDisplayed()));
+        //        softAssert.assertEquals(imgElements.stream().map(WebElement::getText).collect(Collectors.toList()),
+        //        TEXTS);
+        //
+        //        //8. Assert that there is the iframe with “Frame Button” exist
+        //        softAssert.assertTrue(driver.findElement(By.id("frame")).isDisplayed());
+        //
+        //        //9. Switch to the iframe and check that there is “Frame Button” in the iframe
+        //        driver.switchTo().frame("frame");
+        //        WebElement frameBtn = driver.findElement(By.cssSelector("#frame-button"));
+        //        softAssert.assertEquals(frameBtn.getAttribute("value"), "Frame Button");
+        //        softAssert.assertTrue(frameBtn.isDisplayed());
+        //
+        //        //10. Switch to original window back
+        //        driver.switchTo().parentFrame();
+        //
+        //        //11. Assert that there are 5 items in the Left Section are displayed, and they have proper text
+        //        List<WebElement> sideButtons = driver.findElements(By.xpath("//*[@id=\"mCSB_1_container\"]/ul/li"));
+        //        sideButtons.forEach(button -> softAssert.assertTrue(button.isDisplayed()));
+        //        softAssert.assertEquals(sideButtons.stream().map(WebElement::getText).collect(Collectors.toList()),
+        //            SIDE_BUTTONS);
 
         //12. Close Browser
         softAssert.assertAll();

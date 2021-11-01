@@ -2,8 +2,8 @@
 <suite name="All Test Suite HW2">
   <test name="Exercise One Test">
     <classes>
-      <class name="com.epam.tc.hw2.ex1.ExerciseOneTest"></class>
-      <class name="com.epam.tc.hw2.ex2.ExerciseTwoTest"></class>
-    </classes>
+      <class name="com.epam.tc.hw3.test.ExerciseOneTest"></class>
+      <class name="com.epam.tc.hw3.test.ExerciseTwoTest"></class>
+      </classes>
   </test>
 </suite>

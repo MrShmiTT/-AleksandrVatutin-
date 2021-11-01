@@ -2,7 +2,7 @@
 <suite name="Exercise Two Test Suite">
   <test name="Exercise Two Test">
     <classes>
-      <class name="com.epam.tc.hw2.ex2.ExerciseTwoTest"></class>
+      <class name="com.epam.tc.hw3.test.ExerciseTwoTest"></class>
     </classes>
   </test>
 </suite>
