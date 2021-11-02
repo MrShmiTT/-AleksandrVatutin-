@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CommonLogin extends AbstractPage {
+public class Login extends AbstractPage {
 
     @FindBy(id = "user-icon")
     private WebElement loginIcon;
@@ -21,7 +21,7 @@ public class CommonLogin extends AbstractPage {
     @FindBy(id = "user-name")
     private WebElement fullUserName;
 
-    public CommonLogin(WebDriver driver) {
+    public Login(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
