@@ -6,7 +6,9 @@ import com.epam.tc.hw3.driver.DriverSingleton;
 import com.epam.tc.hw3.page.Login;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
@@ -16,7 +18,7 @@ public class BaseTest {
     public static final String URL = ConfProperties.getProperty("page");
     public SoftAssert softAssert = new SoftAssert();
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
         driver = DriverSingleton.getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -38,7 +40,7 @@ public class BaseTest {
         softAssert.assertAll();
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void stopBrowser() {
         DriverSingleton.closeDriver();
     }

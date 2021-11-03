@@ -30,7 +30,7 @@ public class DifferentElements extends AbstractPage {
     @FindBy(xpath = "//option[text()='Yellow']")
     private WebElement yellowColor;
 
-    @FindBy(xpath = "//option[text()='Yellow']")
+    @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
     List<WebElement> logs;
 
     public DifferentElements(WebDriver driver) {

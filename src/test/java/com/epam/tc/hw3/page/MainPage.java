@@ -1,7 +1,6 @@
 package com.epam.tc.hw3.page;
 
 import com.epam.tc.hw3.config.ConfProperties;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HeaderMenu extends AbstractPage {
+public class MainPage extends AbstractPage {
 
     @FindBy(xpath = "//header/div/nav/ul[1]/li")
     List<WebElement> headerButtons;
@@ -26,7 +25,10 @@ public class HeaderMenu extends AbstractPage {
     @FindBy(css = "#frame-button")
     private WebElement frameBtn;
 
-    public HeaderMenu(WebDriver driver) {
+    @FindBy(xpath = "//*[@id=\"mCSB_1_container\"]/ul/li")
+    List<WebElement> sideButtons;
+
+    public MainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
@@ -80,5 +82,18 @@ public class HeaderMenu extends AbstractPage {
 
     public void switchToParentFrame() {
         driver.switchTo().parentFrame();
+    }
+
+    public boolean areSideButtonsDisplayed() {
+        for (WebElement sideButton : sideButtons) {
+            if (!sideButton.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public List<String> getSideButtons() {
+        return sideButtons.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 }

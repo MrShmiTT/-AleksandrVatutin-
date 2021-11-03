@@ -66,6 +66,9 @@
 
     <profile>
       <id>hw3-all-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw3/HW3AllTestSuite.xml</suite.xml.name>
       </properties>
@@ -73,9 +76,6 @@
 
     <profile>
       <id>hw3-first-exercise-test-suite</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw3/HW3FirstExerciseTestSuite.xml</suite.xml.name>
       </properties>
