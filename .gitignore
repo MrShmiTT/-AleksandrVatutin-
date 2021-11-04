@@ -11,3 +11,4 @@ schema
 .gradle
 .repo
 cucumber-html-reports
+.allure/
