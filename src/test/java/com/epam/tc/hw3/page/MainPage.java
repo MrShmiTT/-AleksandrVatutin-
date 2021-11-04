@@ -34,12 +34,7 @@ public class MainPage extends AbstractPage {
     }
 
     public boolean areHeaderButtonsDisplayed() {
-        for (WebElement headerButton : headerButtons) {
-            if (!headerButton.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
+        return headerButtons.stream().allMatch(WebElement::isDisplayed);
     }
 
     public List<String> getHeaderButtonsText() {
@@ -47,21 +42,11 @@ public class MainPage extends AbstractPage {
     }
 
     public boolean areImagesDisplayed() {
-        for (WebElement img : imgs) {
-            if (!img.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
+        return imgs.stream().allMatch(WebElement::isDisplayed);
     }
 
     public boolean areImageTextDisplayed() {
-        for (WebElement imgElement : imgElements) {
-            if (!imgElement.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
+        return imgElements.stream().allMatch(WebElement::isDisplayed);
     }
 
     public List<String> getImageTexts() {
@@ -85,12 +70,7 @@ public class MainPage extends AbstractPage {
     }
 
     public boolean areSideButtonsDisplayed() {
-        for (WebElement sideButton : sideButtons) {
-            if (!sideButton.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
+        return sideButtons.stream().allMatch(WebElement::isDisplayed);
     }
 
     public List<String> getSideButtons() {

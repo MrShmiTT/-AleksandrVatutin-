@@ -19,9 +19,15 @@ public class ExerciseTwoTest extends BaseTest {
         assertThat(differentElements.getTitle()).isEqualTo(DIFFERENT_ELEMENTS);
 
         //6. Select checkboxes Water, Wind
+        differentElements.selectWaterCheckbox();
+        differentElements.selectWindCheckbox();
+
         //7. Select radio Selen
+        differentElements.selectRadioSelen();
+
         //8. Select in dropdown Yellow
-        differentElements.selectConfig();
+        differentElements.selectDropDownList();
+        differentElements.selectYellowInDropDownList();
 
         //9. Assert that
         //for each checkbox there is an individual log row and value is corresponded to the status of checkbox
