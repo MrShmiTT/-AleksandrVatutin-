@@ -1,9 +1,9 @@
 package com.epam.tc.hw4.test;
 
-import static com.epam.tc.hw3.config.AssertsData.FRAME_BTN;
-import static com.epam.tc.hw3.config.AssertsData.HEADER_BUTTONS;
-import static com.epam.tc.hw3.config.AssertsData.SIDE_BUTTONS;
-import static com.epam.tc.hw3.config.AssertsData.TEXTS;
+import static com.epam.tc.hw4.config.AssertsData.FRAME_BTN;
+import static com.epam.tc.hw4.config.AssertsData.HEADER_BUTTONS;
+import static com.epam.tc.hw4.config.AssertsData.SIDE_BUTTONS;
+import static com.epam.tc.hw4.config.AssertsData.TEXTS;
 
 import com.epam.tc.hw4.page.MainPage;
 import io.qameta.allure.Feature;

@@ -47,11 +47,23 @@ public class DifferentElements extends AbstractPage {
         return driver.getTitle();
     }
 
-    public void selectConfig() {
+    public void selectWaterCheckbox() {
         waterCheckbox.click();
+    }
+
+    public void selectWindCheckbox() {
         windCheckbox.click();
+    }
+
+    public void selectRadioSelen() {
         radioSelen.click();
+    }
+
+    public void selectDropDownList() {
         dropdownList.click();
+    }
+
+    public void selectYellowInDropDownList() {
         yellowColor.click();
     }
 
