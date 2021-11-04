@@ -19,6 +19,13 @@
 
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+
+    <aspectj.version>1.9.7</aspectj.version>
+    <allure-testng.version>2.15.0</allure-testng.version>
+    <allure-maven.version>2.10.0</allure-maven.version>
+    <reportVersion.version>2.10.0</reportVersion.version>
+    <allure-commandline.version>2.15.0</allure-commandline.version>
+
   </properties>
 
   <profiles>
@@ -66,9 +73,6 @@
 
     <profile>
       <id>hw3-all-test-suite</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw3/HW3AllTestSuite.xml</suite.xml.name>
       </properties>
@@ -87,7 +91,18 @@
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw3/HW3SecondExerciseTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
+
+    <profile>
+      <id>hw4-all-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4AllTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
   </profiles>
+
 
   <dependencies>
     <dependency>
@@ -123,10 +138,26 @@
       <artifactId>webdrivermanager</artifactId>
       <version>5.0.3</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure-testng.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-commandline</artifactId>
+      <version>${allure-commandline.version}</version>
+      <type>zip</type>
+    </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -168,9 +199,39 @@
           <suiteXmlFiles>
             <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
+          <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
+          <systemProperties>
+            <property>
+              <name>allure.results.directory</name>
+              <value>${project.basedir}/target/allure-results</value>
+            </property>
+          </systemProperties>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
 
     </plugins>
   </build>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+    <plugin>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-maven</artifactId>
+      <version>${allure-maven.version}</version>
+      <configuration>
+        <reportVersion>${reportVersion.version}</reportVersion>
+<!--        <installDirectory>${project.build.directory}</installDirectory>-->
+      </configuration>
+    </plugin>
+    </plugins>
+  </reporting>
 </project>
