@@ -1,8 +1,13 @@
 target/
 log/
 *.iml
+*.yml
 *.iws
 .idea/
 out/
-
-
+*.ipr
+build
+schema
+.gradle
+.repo
+cucumber-html-reports
