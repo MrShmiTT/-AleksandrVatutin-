@@ -38,7 +38,7 @@ public class BaseTest {
         softAssert.assertAll();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass(alwaysRun = true, description = "Quite browser")
     public void stopBrowser() {
         DriverSingleton.closeDriver();
     }

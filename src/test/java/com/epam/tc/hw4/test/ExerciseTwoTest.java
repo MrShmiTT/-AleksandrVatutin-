@@ -5,8 +5,16 @@ import static com.epam.tc.hw4.config.AssertsData.LOGS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.epam.tc.hw4.page.DifferentElements;
+import com.epam.tc.hw4.util.Listener;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Feature("Different Elements page functionality (@Feature)")
+@Story("Checking of choosing configuration and logs assertion (@Story)")
+//@Listeners(Listener.class)
 public class ExerciseTwoTest extends BaseTest {
 
     @Test

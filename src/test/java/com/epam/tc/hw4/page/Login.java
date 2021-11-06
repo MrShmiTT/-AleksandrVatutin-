@@ -37,14 +37,14 @@ public class Login extends AbstractPage {
         return driver.getTitle();
     }
 
-    @Step("Perform login {login}")
+    @Step("Perform login {ConfProperties.getProperty(\"login\")}")
     public void login() {
         loginIcon.click();
         inputLogin.sendKeys(ConfProperties.getProperty("login"));
         inputPassword.sendKeys(ConfProperties.getProperty("password") + Keys.ENTER);
     }
 
-    @Step("Get full user name")
+    @Step("Get full user name - {AssertsData.FULL_USER_NAME}")
     public String getFullUserName() {
         return fullUserName.getText();
     }
