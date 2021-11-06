@@ -22,7 +22,7 @@
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
 
     <aspectj.version>1.9.7</aspectj.version>
-    <allure-testng.version>2.15.0</allure-testng.version>
+    <allure-testng.version>2.16.1</allure-testng.version>
     <allure-maven.version>2.10.0</allure-maven.version>
     <reportVersion.version>2.10.0</reportVersion.version>
     <allure-commandline.version>2.15.0</allure-commandline.version>
@@ -224,25 +224,18 @@
             <version>${aspectj.version}</version>
           </dependency>
         </dependencies>
-
       </plugin>
 
-    </plugins>
-  </build>
-
-  <reporting>
-<!--    <excludeDefaults>true</excludeDefaults>-->
-    <plugins>
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
         <version>${allure-maven.version}</version>
         <configuration>
           <reportVersion>${reportVersion.version}</reportVersion>
-          <installDirectory>${project.build.directory}</installDirectory>
+          <!--          <installDirectory>${project.build.directory}</installDirectory>-->
         </configuration>
       </plugin>
-    </plugins>
-  </reporting>
 
+    </plugins>
+  </build>
 </project>

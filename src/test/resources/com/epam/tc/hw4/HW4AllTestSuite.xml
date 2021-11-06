@@ -5,11 +5,11 @@
 <!--      <listener class-name="com.epam.tc.hw4.util.Listener" />-->
 <!--    </listeners>-->
 
-<!--  <test name="Exercise One - HomePage Test">-->
-<!--    <classes>-->
-<!--      <class name="com.epam.tc.hw4.test.ExerciseOneTest"></class>-->
-<!--    </classes>-->
-<!--  </test>-->
+  <test name="Exercise One - HomePage Test">
+    <classes>
+      <class name="com.epam.tc.hw4.test.ExerciseOneTest"></class>
+    </classes>
+  </test>
 
   <test name="Exercise Two - DiffPage Test">
     <classes>

@@ -12,12 +12,12 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Feature("Different Elements page functionality (@Feature)")
-@Story("Checking of choosing configuration and logs assertion (@Story)")
+@Feature("Different Elements page functionality")
+@Story("Checking of choosing configuration and logs assertion")
 //@Listeners(Listener.class)
 public class ExerciseTwoTest extends BaseTest {
 
-    @Test
+    @Test(description = "Different elements page elements")
     public void secondTest() {
 
         DifferentElements differentElements = new DifferentElements(driver);

@@ -16,17 +16,12 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Feature("Home page functionality (@Feature)")
+@Feature("Home page functionality")
 @Story("Checking of basic functionality and displaying of page elements (@Story)")
-@Listeners(Listener.class)
+//@Listeners(Listener.class)
 public class ExerciseOneTest extends BaseTest {
 
-    @Test(description = "Home page elements (@Test)")
-    @Severity(SeverityLevel.CRITICAL)
-    @Description("This is test description (@Description)")
-    @Feature("test method @Feature")
-    @Story("test method @Story")
-    @Epic("test method @Epic")
+    @Test(description = "Home page elements")
     public void firstTest() {
 
         //5. Assert that there are 4 items on the header section are displayed, and they have proper texts
