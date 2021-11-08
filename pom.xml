@@ -12,7 +12,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
     <!--        Checkstyle -->
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
@@ -27,7 +27,7 @@
     <webdrivermanager.version>5.0.3</webdrivermanager.version>
 
     <!--        Allure -->
-    <allure-testng.version>2.13.2</allure-testng.version>
+    <allure-testng.version>2.16.1</allure-testng.version>
     <aspectj.version>1.9.7</aspectj.version>
     <allure-maven.version>2.10.0</allure-maven.version>
 
