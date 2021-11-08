@@ -12,3 +12,4 @@ schema
 .repo
 cucumber-html-reports
 .allure/
+/allure-results

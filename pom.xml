@@ -12,20 +12,27 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 
-    <testng.version>7.4.0</testng.version>
-    <junit.version>4.12</junit.version>
-
-    <selenium-java.version>4.0.0</selenium-java.version>
-
-    <checkstyle.version>8.42</checkstyle.version>
+    <!--        Checkstyle -->
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <checkstyle.version>8.42</checkstyle.version>
 
+    <!--        Tests -->
+    <testng.version>7.1.0</testng.version>
+    <assertj-core.version>3.21.0</assertj-core.version>
+
+    <!--        Selenium -->
+    <selenium-java.version>4.0.0</selenium-java.version>
+    <webdrivermanager.version>5.0.3</webdrivermanager.version>
+
+    <!--        Allure -->
+    <allure-testng.version>2.13.2</allure-testng.version>
     <aspectj.version>1.9.7</aspectj.version>
-    <allure-testng.version>2.16.1</allure-testng.version>
     <allure-maven.version>2.10.0</allure-maven.version>
-    <reportVersion.version>2.10.0</reportVersion.version>
-    <allure-commandline.version>2.15.0</allure-commandline.version>
+
+    <!--    <reportVersion.version>2.14.0</reportVersion.version>-->
+    <!--    <allure-commandline.version>2.15.0</allure-commandline.version>-->
 
   </properties>
 
@@ -116,7 +123,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.21.0</version>
+      <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -137,55 +144,57 @@
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.0.3</version>
+      <version>${webdrivermanager.version}</version>
+      <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
       <version>${allure-testng.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-commandline</artifactId>
-      <version>${allure-commandline.version}</version>
-      <type>zip</type>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.apache.maven.doxia</groupId>-->
-<!--      <artifactId>doxia-site-renderer</artifactId>-->
-<!--      <version>1.10</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>io.qameta.allure</groupId>-->
+    <!--      <artifactId>allure-commandline</artifactId>-->
+    <!--      <version>${allure-commandline.version}</version>-->
+    <!--      &lt;!&ndash;      <type>zip</type>&ndash;&gt;-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.apache.maven.plugins</groupId>-->
-<!--      <artifactId>maven-project-info-reports-plugin</artifactId>-->
-<!--      <version>3.1.2</version>-->
-<!--      <type>maven-plugin</type>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>junit</groupId>-->
+    <!--      <artifactId>junit</artifactId>-->
+    <!--      <version>${junit.version}</version>-->
+    <!--      <scope>test</scope>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.apache.maven.plugins</groupId>-->
-<!--      <artifactId>maven-site-plugin</artifactId>-->
-<!--      <version>3.9.1</version>-->
-<!--      <type>maven-plugin</type>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.maven.doxia</groupId>-->
+    <!--      <artifactId>doxia-site-renderer</artifactId>-->
+    <!--      <version>1.10</version>-->
+    <!--    </dependency>-->
+
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.maven.plugins</groupId>-->
+    <!--      <artifactId>maven-project-info-reports-plugin</artifactId>-->
+    <!--      <version>3.1.2</version>-->
+    <!--      <type>maven-plugin</type>-->
+    <!--    </dependency>-->
+
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.maven.plugins</groupId>-->
+    <!--      <artifactId>maven-site-plugin</artifactId>-->
+    <!--      <version>3.9.1</version>-->
+    <!--      <type>maven-plugin</type>-->
+    <!--    </dependency>-->
 
   </dependencies>
 
   <build>
     <plugins>
 
+      <!--            CheckStyle Plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -219,57 +228,96 @@
         </executions>
       </plugin>
 
+      <!--            Surefire with Allure-->
+<!--            <plugin>-->
+<!--              <groupId>org.apache.maven.plugins</groupId>-->
+<!--              <artifactId>maven-surefire-plugin</artifactId>-->
+<!--              <version>${maven-surefire-plugin.version}</version>-->
+<!--              <configuration>-->
+<!--                <testFailureIgnore>true</testFailureIgnore>-->
+<!--                <suiteXmlFiles>-->
+<!--                  <suiteXmlFile>${suite.xml.name}</suiteXmlFile>-->
+<!--                </suiteXmlFiles>-->
+<!--                <argLine>-->
+<!--                  -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
+<!--                </argLine>-->
+<!--                <systemProperties>-->
+<!--                  <property>-->
+<!--                    <name>allure.results.directory</name>-->
+<!--                    <value>${project.basedir}/target/allure-results</value>-->
+<!--                  </property>-->
+<!--                </systemProperties>-->
+<!--              </configuration>-->
+<!--              <dependencies>-->
+<!--                <dependency>-->
+<!--                  <groupId>org.aspectj</groupId>-->
+<!--                  <artifactId>aspectjweaver</artifactId>-->
+<!--                  <version>${aspectj.version}</version>-->
+<!--                </dependency>-->
+<!--              </dependencies>-->
+<!--            </plugin>-->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
-          <testFailureIgnore>true</testFailureIgnore>
-          <suiteXmlFiles>
-            <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
-          </suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
-          <systemProperties>
-            <property>
-              <name>allure.results.directory</name>
-              <value>${project.basedir}/target/allure-results</value>
-            </property>
-          </systemProperties>
+          <suiteXmlFiles>
+            <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
+          </suiteXmlFiles>
+          <testFailureIgnore>true</testFailureIgnore>
         </configuration>
         <dependencies>
           <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
+            <scope>runtime</scope>
           </dependency>
         </dependencies>
       </plugin>
 
+
+      <!--      <plugin>-->
+      <!--        <groupId>io.qameta.allure</groupId>-->
+      <!--        <artifactId>allure-maven</artifactId>-->
+      <!--        <version>${allure-maven.version}</version>-->
+      <!--        <configuration>-->
+      <!--          <reportVersion>${allure-testng.version}</reportVersion>-->
+      <!--        </configuration>-->
+      <!--      </plugin>-->
+
+      <!--            <plugin>-->
+      <!--              <groupId>org.apache.maven.plugins</groupId>-->
+      <!--              <artifactId>maven-site-plugin</artifactId>-->
+      <!--              <version>3.7.1</version>-->
+      <!--            </plugin>-->
+
+      <!--      <plugin>-->
+      <!--        <groupId>org.apache.maven.plugins</groupId>-->
+      <!--        <artifactId>maven-project-info-reports-plugin</artifactId>-->
+      <!--        <version>3.0.0</version>-->
+      <!--      </plugin>-->
+
+
+    </plugins>
+  </build>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
         <version>${allure-maven.version}</version>
         <configuration>
-          <reportVersion>${reportVersion.version}</reportVersion>
-          <installDirectory>${project.build.directory}</installDirectory>
+          <reportVersion>${allure-testng.version}</reportVersion>
         </configuration>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.7.1</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.0.0</version>
-      </plugin>
-
-
     </plugins>
-  </build>
+  </reporting>
+
 </project>
