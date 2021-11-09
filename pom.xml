@@ -106,6 +106,13 @@
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4AllTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
+
+    <profile>
+      <id>hw4-only-passed-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4OnlyPassedTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
   </profiles>
 
 
