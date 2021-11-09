@@ -12,13 +12,25 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
-    <testng.version>7.4.0</testng.version>
-
-    <selenium-java.version>4.0.0</selenium-java.version>
-
-    <checkstyle.version>8.42</checkstyle.version>
+    <!--        Checkstyle -->
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <checkstyle.version>8.42</checkstyle.version>
+
+    <!--        Tests -->
+    <testng.version>7.1.0</testng.version>
+    <assertj-core.version>3.21.0</assertj-core.version>
+
+    <!--        Selenium -->
+    <selenium-java.version>4.0.0</selenium-java.version>
+    <webdrivermanager.version>5.0.3</webdrivermanager.version>
+
+    <!--        Allure -->
+    <allure-testng.version>2.13.2</allure-testng.version>
+    <aspectj.version>1.9.7</aspectj.version>
+    <allure-maven.version>2.10.0</allure-maven.version>
+
   </properties>
 
   <profiles>
@@ -66,9 +78,6 @@
 
     <profile>
       <id>hw3-all-test-suite</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw3/HW3AllTestSuite.xml</suite.xml.name>
       </properties>
@@ -87,7 +96,25 @@
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw3/HW3SecondExerciseTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
+
+    <profile>
+      <id>hw4-all-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4AllTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw4-only-passed-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4OnlyPassedTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
   </profiles>
+
 
   <dependencies>
     <dependency>
@@ -100,7 +127,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.21.0</version>
+      <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -121,12 +148,23 @@
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.0.3</version>
+      <version>${webdrivermanager.version}</version>
+      <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure-testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
+
+      <!--            CheckStyle Plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -160,17 +198,45 @@
         </executions>
       </plugin>
 
+      <!--            Surefire with Allure-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
           <suiteXmlFiles>
             <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
+          <testFailureIgnore>true</testFailureIgnore>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
       </plugin>
 
     </plugins>
   </build>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+        <configuration>
+          <reportVersion>${allure-testng.version}</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
