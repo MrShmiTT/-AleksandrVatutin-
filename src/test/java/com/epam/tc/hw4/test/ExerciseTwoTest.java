@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 
 @Feature("Different Elements page functionality")
 @Story("Checking of choosing configuration and logs assertion")
-//@Listeners(Listener.class)
 public class ExerciseTwoTest extends BaseTest {
 
     @Test(description = "Different elements page elements")

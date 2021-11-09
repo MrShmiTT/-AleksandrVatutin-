@@ -27,7 +27,7 @@
     <webdrivermanager.version>5.0.3</webdrivermanager.version>
 
     <!--        Allure -->
-    <allure-testng.version>2.16.1</allure-testng.version>
+    <allure-testng.version>2.13.2</allure-testng.version>
     <aspectj.version>1.9.7</aspectj.version>
     <allure-maven.version>2.10.0</allure-maven.version>
 

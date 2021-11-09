@@ -4,10 +4,12 @@ import com.epam.tc.hw4.config.AssertsData;
 import com.epam.tc.hw4.config.ConfProperties;
 import com.epam.tc.hw4.driver.DriverSingleton;
 import com.epam.tc.hw4.page.Login;
+import com.epam.tc.hw4.util.Listener;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.asserts.SoftAssert;
 
 public class BaseTest {

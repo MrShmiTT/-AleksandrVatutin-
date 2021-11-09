@@ -18,7 +18,6 @@ import org.testng.annotations.Test;
 
 @Feature("Home page functionality")
 @Story("Checking of basic functionality and displaying of page elements (@Story)")
-//@Listeners(Listener.class)
 public class ExerciseOneTest extends BaseTest {
 
     @Test(description = "Home page elements")

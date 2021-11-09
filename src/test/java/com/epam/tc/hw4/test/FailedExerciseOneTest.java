@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 
 @Feature("Home page functionality Failed Test")
 @Story("Checking of basic functionality and displaying of page elements")
-//@Listeners(Listener.class)
 public class FailedExerciseOneTest extends BaseTest {
 
     @Test(description = "Home page functionality Failed")
@@ -22,7 +21,7 @@ public class FailedExerciseOneTest extends BaseTest {
         //5. Assert that there are 4 items on the header section are displayed, and they have proper texts
         MainPage mainPage = new MainPage(driver);
         softAssert.assertTrue(mainPage.areHeaderButtonsDisplayed());
-        softAssert.assertEquals(mainPage.getHeaderButtonsText(), "HEADER_BUTTONS");
+        softAssert.assertEquals(mainPage.getHeaderButtonsText(), "HEADER_BUTTONS"); // FAILED LINE
 
         // 6. Assert that there are 4 images on the Index Page, and they are displayed
         softAssert.assertTrue(mainPage.areImagesDisplayed());
