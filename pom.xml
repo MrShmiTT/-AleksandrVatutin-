@@ -31,6 +31,9 @@
     <aspectj.version>1.9.7</aspectj.version>
     <allure-maven.version>2.10.0</allure-maven.version>
 
+    <!--        Cucumber -->
+    <cucumber.version>7.0.0</cucumber.version>
+
   </properties>
 
   <profiles>
@@ -99,9 +102,6 @@
 
     <profile>
       <id>hw4-all-test-suite</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4AllTestSuite.xml</suite.xml.name>
       </properties>
@@ -113,6 +113,17 @@
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw4/HW4OnlyPassedTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
+
+    <profile>
+      <id>hw5-all-test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw5/hw5.xml</suite.xml.name>
+      </properties>
+    </profile>
+
   </profiles>
 
 
@@ -156,6 +167,20 @@
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
       <version>${allure-testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -210,7 +235,7 @@
           <suiteXmlFiles>
             <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
-          <testFailureIgnore>true</testFailureIgnore>
+          <testFailureIgnore>false</testFailureIgnore>
         </configuration>
         <dependencies>
           <dependency>
