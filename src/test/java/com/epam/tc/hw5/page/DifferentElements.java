@@ -80,4 +80,8 @@ public class DifferentElements extends AbstractPage {
         return logs.stream().map(e -> e.getText().substring(e.getText().indexOf(' ') + 1))
                    .collect(Collectors.toList());
     }
+
+    public WebElement getServiceButton() {
+        return serviceButton;
+    }
 }

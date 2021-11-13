@@ -8,6 +8,7 @@ public class AssertsData {
     public static final String FULL_USER_NAME = "ROMAN IOVLEV";
     public static final String FRAME_BTN = "Frame Button";
     public static final String DIFFERENT_ELEMENTS = "Different Elements";
+    public static final String USER_TABLE = "User Table";
 
     public static final List<String> HEADER_BUTTONS = List.of(
         "HOME",

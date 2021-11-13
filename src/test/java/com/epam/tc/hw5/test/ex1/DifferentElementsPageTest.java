@@ -1,31 +1,13 @@
-package com.epam.tc.hw5.ex1;
+package com.epam.tc.hw5.test.ex1;
 
 import static com.epam.tc.hw5.config.AssertsData.LOGS;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw5.page.DifferentElements;
-import com.epam.tc.hw5.page.Login;
 import com.epam.tc.hw5.test.BaseTest;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class DifferentElementsPage extends BaseTest {
-
-    DifferentElements differentElements = new DifferentElements(driver);
-    Login login = new Login(driver);
-
-    //1. Open test site by URL
-    @Given("I open JDI home page")
-    public void openHomePage() {
-        login.open(URL);
-    }
-
-    //2. Perform login
-    @Given("I perform login as 'Roman Iovlev'")
-    public void performLogin() {
-        login.login();
-    }
+public class DifferentElementsPageTest extends BaseTest {
 
     //3. Open through the header menu Service -> Different Elements Page
     @When("I follow on 'Different elements page' throw the header menu")
