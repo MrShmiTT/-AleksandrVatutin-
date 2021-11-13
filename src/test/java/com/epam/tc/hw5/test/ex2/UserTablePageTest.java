@@ -1,5 +1,6 @@
 package com.epam.tc.hw5.test.ex2;
 
+import static com.epam.tc.hw4.config.AssertsData.LOGS_USER_TABLE;
 import static com.epam.tc.hw5.config.AssertsData.USER_TABLE;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,7 +31,7 @@ public class UserTablePageTest extends BaseTest {
 
     @And("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
     public void areDropdownsDisplayed(int number) {
-        assertThat(userTablePage.countDescriptionsNumber()).isEqualTo(number);
+        assertThat(userTablePage.countDropdownsNumber()).isEqualTo(number);
     }
 
     @And("{int} Usernames should be displayed on Users Table on User Table Page")
@@ -64,5 +65,15 @@ public class UserTablePageTest extends BaseTest {
         List<String> res = new ArrayList<>();
         tableWithoutHeader.forEach(res::addAll);
         assertThat(userTablePage.getUserRoles()).isEqualTo(res);
+    }
+
+    @When("I select 'vip' checkbox for 'Sergey Ivan'")
+    public void selectVipCheckBox() {
+        userTablePage.clickOnCheckBoxIvan();
+    }
+
+    @Then ("1 log row has 'Vip: condition changed to true' text in log section")
+    public void assertUserTableLogs() {
+        assertThat(userTablePage.getLogsUserTable()).isEqualTo(LOGS_USER_TABLE);
     }
 }

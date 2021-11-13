@@ -36,5 +36,9 @@ public class AssertsData {
         "metal: value changed to Selen",
         "Wind: condition changed to true",
         "Water: condition changed to true"
-        );
+    );
+
+    public static final List<String> LOGS_USER_TABLE = List.of(
+        "Vip: condition changed to true"
+    );
 }

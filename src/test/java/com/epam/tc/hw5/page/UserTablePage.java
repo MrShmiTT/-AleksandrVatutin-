@@ -35,6 +35,12 @@ public class UserTablePage extends AbstractPage {
     @FindBy(xpath = "//tr[1]/td[2]/select/option")
     private List<WebElement> userRoles;
 
+    @FindBy(id = "ivan")
+    private WebElement checkboxIvan;
+
+    @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
+    List<WebElement> logsUserTable;
+
     public UserTablePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -81,5 +87,14 @@ public class UserTablePage extends AbstractPage {
 
     public List<String> getUserRoles() {
         return userRoles.stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    public void clickOnCheckBoxIvan() {
+        checkboxIvan.click();
+    }
+
+    public List<String> getLogsUserTable() {
+        return logsUserTable.stream().map(e -> e.getText().substring(e.getText().indexOf(' ') + 1))
+                   .collect(Collectors.toList());
     }
 }
