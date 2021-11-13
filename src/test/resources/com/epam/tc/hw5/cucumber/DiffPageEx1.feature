@@ -1,4 +1,4 @@
-Feature: As a user I want to get ability to see appropriate logs on different elements page
+Feature: As a user I want to get ability to see appropriate logs on the different elements page
 
   Scenario: Different elements page contains proper elements
     Given I open JDI GitHub site

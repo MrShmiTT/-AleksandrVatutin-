@@ -1,6 +1,6 @@
-Feature: As a user I want to see all elements no user table page
+Feature: As a user I want to see all elements on user table page
 
-  Scenario: User Table Page test
+  Scenario: User Table Page elements and data test
     Given I open JDI GitHub site
     And I login as user 'Roman Iovlev'
     When I click on 'Service' button in Header

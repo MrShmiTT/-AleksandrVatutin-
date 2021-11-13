@@ -1,25 +1,25 @@
-package com.epam.tc.hw5.test.ex2;
+package com.epam.tc.hw5.step.ex2and3;
 
 import static com.epam.tc.hw4.config.AssertsData.LOGS_USER_TABLE;
 import static com.epam.tc.hw5.config.AssertsData.USER_TABLE;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw5.test.BaseTest;
+import com.epam.tc.hw5.step.BaseTest;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.datatable.DataTable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserTablePageTest extends BaseTest {
+public class UserTablePageSteps extends BaseTest {
 
     @When("I click on 'Service' button in Header")
     public void clickOnServiceButton() {
         userTablePage.clickOnServiceButton();
     }
 
-    @When("I click on 'User Table' button in Service dropdown")
+    @And("I click on 'User Table' button in Service dropdown")
     public void clickOnUserTableButton() {
         userTablePage.clickOnUserTableButton();
     }
@@ -72,7 +72,7 @@ public class UserTablePageTest extends BaseTest {
         userTablePage.clickOnCheckBoxIvan();
     }
 
-    @Then ("1 log row has 'Vip: condition changed to true' text in log section")
+    @Then("1 log row has 'Vip: condition changed to true' text in log section")
     public void assertUserTableLogs() {
         assertThat(userTablePage.getLogsUserTable()).isEqualTo(LOGS_USER_TABLE);
     }

@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.test;
+package com.epam.tc.hw5.step;
 
 import static com.epam.tc.hw5.driver.DriverSingleton.driver;
 

@@ -1,5 +1,6 @@
-package com.epam.tc.hw5.test;
+package com.epam.tc.hw5.step;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
 public class CommonSteps extends BaseTest {
@@ -11,7 +12,7 @@ public class CommonSteps extends BaseTest {
     }
 
     //2. Perform login
-    @Given("I login as user 'Roman Iovlev'")
+    @And("I login as user 'Roman Iovlev'")
     public void performLogin() {
         login.login();
     }
