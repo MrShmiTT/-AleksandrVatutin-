@@ -116,11 +116,15 @@
 
     <profile>
       <id>hw5-all-test-suite</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
         <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw5/hw5.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>hw6-all-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/test/resources/com/epam/tc/hw6/HW6OnlyPassedTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
 
