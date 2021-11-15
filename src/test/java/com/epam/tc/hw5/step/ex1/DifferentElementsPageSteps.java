@@ -4,7 +4,6 @@ import static com.epam.tc.hw5.config.AssertsData.LOGS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.epam.tc.hw5.step.BaseSteps;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -17,14 +16,9 @@ public class DifferentElementsPageSteps extends BaseSteps {
     }
 
     //4. Select checkboxes Water, Wind
-    @When("I select 'Water' checkbox on the Different elements page")
-    public void selectWaterCheckbox() {
-        differentElementsPage.selectWaterCheckbox();
-    }
-
-    @When("I select 'Wind' checkbox on the Different elements page")
-    public void selectWindCheckbox() {
-        differentElementsPage.selectWindCheckbox();
+    @When("I select {string} checkbox on the Different elements page")
+    public void selectCheckBox(String checkboxName) {
+        differentElementsPage.selectCheckBox(checkboxName);
     }
 
     //5. Select radio Selen
@@ -48,7 +42,6 @@ public class DifferentElementsPageSteps extends BaseSteps {
     //for each checkbox there is an individual log row and value is corresponded to the status of checkbox
     //for radio button there is a log row and value is corresponded to the status of radio button
     //for dropdown there is a log row and value is corresponded to the selected value.
-
     @Then("logs are displayed and have proper rows")
     public void assertLogs() {
         assertThat(differentElementsPage.getLogs()).isEqualTo(LOGS);

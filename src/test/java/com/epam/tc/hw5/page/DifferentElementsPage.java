@@ -50,14 +50,19 @@ public class DifferentElementsPage extends AbstractPage {
         return driver.getTitle();
     }
 
-    @Step("Select Water checkbox")
-    public void selectWaterCheckbox() {
-        waterCheckbox.click();
-    }
-
-    @Step("Select Wind checkbox")
-    public void selectWindCheckbox() {
-        windCheckbox.click();
+    @Step("Select checkbox")
+    public DifferentElementsPage selectCheckBox(String checkBoxName) {
+        switch (checkBoxName) {
+            case "Water":
+                waterCheckbox.click();
+                break;
+            case "Wind":
+                windCheckbox.click();
+                break;
+            default:
+                System.out.println("Unexpected checkbox name");
+        }
+        return this;
     }
 
     @Step("Select Selen radio")
