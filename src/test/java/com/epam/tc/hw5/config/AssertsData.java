@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.config;
+package com.epam.tc.hw5.config;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ public class AssertsData {
     public static final String FULL_USER_NAME = "ROMAN IOVLEV";
     public static final String FRAME_BTN = "Frame Button";
     public static final String DIFFERENT_ELEMENTS = "Different Elements";
+    public static final String USER_TABLE = "User Table";
 
     public static final List<String> HEADER_BUTTONS = List.of(
         "HOME",
@@ -36,9 +37,5 @@ public class AssertsData {
         "metal: value changed to Selen",
         "Wind: condition changed to true",
         "Water: condition changed to true"
-    );
-
-    public static final List<String> LOGS_USER_TABLE = List.of(
-        "Vip: condition changed to true"
-    );
+        );
 }
