@@ -4,11 +4,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfProperties {
+public class ConfigProperties {
     protected static FileInputStream fileInputStream;
     protected static Properties PROPERTIES;
 
-    public ConfProperties() {
+    public ConfigProperties() {
     }
 
     public static String getProperty(String key) {
@@ -17,7 +17,7 @@ public class ConfProperties {
 
     static {
         try {
-            fileInputStream = new FileInputStream("src/test/resources/com/epam/tc/hw5/conf.properties");
+            fileInputStream = new FileInputStream("src/test/resources/com/epam/tc/hw5/config.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {

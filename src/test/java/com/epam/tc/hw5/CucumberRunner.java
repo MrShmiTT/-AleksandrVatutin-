@@ -10,5 +10,5 @@ import org.testng.annotations.Listeners;
     features = "classpath:com/epam/tc/hw5"
 )
 @Listeners(Listener.class)
-public class Runner extends AbstractTestNGCucumberTests {
+public class CucumberRunner extends AbstractTestNGCucumberTests {
 }

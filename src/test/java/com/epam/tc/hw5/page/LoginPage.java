@@ -1,6 +1,6 @@
 package com.epam.tc.hw5.page;
 
-import com.epam.tc.hw5.config.ConfProperties;
+import com.epam.tc.hw5.config.ConfigProperties;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Login extends AbstractPage {
+public class LoginPage extends AbstractPage {
 
     @FindBy(id = "user-icon")
     private WebElement loginIcon;
@@ -22,7 +22,7 @@ public class Login extends AbstractPage {
     @FindBy(id = "user-name")
     private WebElement fullUserName;
 
-    public Login(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
@@ -40,8 +40,8 @@ public class Login extends AbstractPage {
     @Step("Perform login")
     public void login() {
         loginIcon.click();
-        inputLogin.sendKeys(ConfProperties.getProperty("login"));
-        inputPassword.sendKeys(ConfProperties.getProperty("password") + Keys.ENTER);
+        inputLogin.sendKeys(ConfigProperties.getProperty("login"));
+        inputPassword.sendKeys(ConfigProperties.getProperty("password") + Keys.ENTER);
     }
 
     @Step("Get full user name")

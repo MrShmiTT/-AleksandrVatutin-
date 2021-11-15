@@ -3,45 +3,45 @@ package com.epam.tc.hw5.step.ex1;
 import static com.epam.tc.hw5.config.AssertsData.LOGS;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw5.step.BaseTest;
+import com.epam.tc.hw5.step.BaseSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class DifferentElementsPageSteps extends BaseTest {
+public class DifferentElementsPageSteps extends BaseSteps {
 
     //3. Open through the header menu Service -> Different Elements Page
     @When("I follow on 'Different elements page' throw the header menu")
     public void openDiffElementsPage() {
-        differentElements.goToDifferentElementsPage();
+        differentElementsPage.goToDifferentElementsPage();
     }
 
     //4. Select checkboxes Water, Wind
-    @And("I select 'Water' checkbox on the Different elements page")
+    @When("I select 'Water' checkbox on the Different elements page")
     public void selectWaterCheckbox() {
-        differentElements.selectWaterCheckbox();
+        differentElementsPage.selectWaterCheckbox();
     }
 
-    @And("I select 'Wind' checkbox on the Different elements page")
+    @When("I select 'Wind' checkbox on the Different elements page")
     public void selectWindCheckbox() {
-        differentElements.selectWindCheckbox();
+        differentElementsPage.selectWindCheckbox();
     }
 
     //5. Select radio Selen
-    @And("I select 'Selen' radio on the Different elements page")
+    @When("I select 'Selen' radio on the Different elements page")
     public void selectSelenRadio() {
-        differentElements.selectRadioSelen();
+        differentElementsPage.selectRadioSelen();
     }
 
     //6. Select in dropdown Yellow
-    @And("I click on dropdown list on the Different elements page")
+    @When("I click on dropdown list on the Different elements page")
     public void selectDropDOwnList() {
-        differentElements.selectDropDownList();
+        differentElementsPage.selectDropDownList();
     }
 
-    @And("I select Yellow color in dropdown list on the Different elements page")
+    @When("I select Yellow color in dropdown list on the Different elements page")
     public void selectYellowInDropDownList() {
-        differentElements.selectYellowInDropDownList();
+        differentElementsPage.selectYellowInDropDownList();
     }
 
     //7. Assert that
@@ -51,6 +51,6 @@ public class DifferentElementsPageSteps extends BaseTest {
 
     @Then("logs are displayed and have proper rows")
     public void assertLogs() {
-        assertThat(differentElements.getLogs()).isEqualTo(LOGS);
+        assertThat(differentElementsPage.getLogs()).isEqualTo(LOGS);
     }
 }

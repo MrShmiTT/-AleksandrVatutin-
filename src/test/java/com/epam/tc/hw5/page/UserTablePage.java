@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserTablePage extends AbstractPage {
 
-    DifferentElements differentElements = new DifferentElements(driver);
+    DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
 
     @FindBy(linkText = "USER TABLE")
     private WebElement userTableButton;
@@ -47,7 +47,7 @@ public class UserTablePage extends AbstractPage {
     }
 
     public void clickOnServiceButton() {
-        differentElements.getServiceButton().click();
+        differentElementsPage.getServiceButton().click();
     }
 
     public void clickOnUserTableButton() {

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DifferentElements extends AbstractPage {
+public class DifferentElementsPage extends AbstractPage {
 
     @FindBy(linkText = "SERVICE")
     private WebElement serviceButton;
@@ -34,7 +34,7 @@ public class DifferentElements extends AbstractPage {
     @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
     List<WebElement> logs;
 
-    public DifferentElements(WebDriver driver) {
+    public DifferentElementsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
