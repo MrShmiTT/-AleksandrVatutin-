@@ -15,10 +15,10 @@ public class MetalsAndColorsData extends DataClass<MetalsAndColorsData> {
     public List<String> expectedResultList() {
         return Arrays.asList(
             "Summary: " + Arrays.stream(summary).sum(),
-            "Elements:" + getElementsToString(),
-            "Color:" + getColor(),
-            "Metal:" + getMetals(),
-            "Vegetables:" + getVegetablesToString());
+            "Elements: " + getElementsToString(),
+            "Color: " + getColor(),
+            "Metal: " + getMetals(),
+            "Vegetables: " + getVegetablesToString());
     }
 
     public int[] getSummary() {

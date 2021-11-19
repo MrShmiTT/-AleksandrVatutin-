@@ -15,7 +15,6 @@ import java.util.Arrays;
 
 public class MetalAndColorsForm extends Form<MetalsAndColorsData> {
 
-    //    @FindBy(id = "summary-block")
     @UI(".radio")
     public static JList<Label> summary;
 
@@ -58,7 +57,10 @@ public class MetalAndColorsForm extends Form<MetalsAndColorsData> {
         colors.select(entity.getColor());
         metals.select(entity.getMetals());
         vegetables.select(vegetables.selected());
-
         Arrays.stream(entity.getVegetables()).forEach(vegetable -> vegetables.select(vegetable));
+    }
+
+    public void submit() {
+        submit.click();
     }
 }
