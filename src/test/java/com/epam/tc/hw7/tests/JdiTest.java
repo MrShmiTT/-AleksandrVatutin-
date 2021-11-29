@@ -31,8 +31,8 @@ public class JdiTest {
     @Test(dataProvider = "MetalsAndColors", dataProviderClass = DataProviderForTest.class)
     public void loginTest(MetalsAndColorsData metalsAndColorsData) {
         JdiSite.open();
-        JdiSite.login(User.ROMAN);
-        String actualFullName = JdiSite.getUserName();
+        homePage.login(User.ROMAN);
+        String actualFullName = homePage.getUserName();
         Assert.assertEquals(actualFullName, User.ROMAN.getFullName());
         metalsAndColorsHeader.click();
         metalsAndColorsPage.checkOpened();
