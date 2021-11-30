@@ -34,6 +34,8 @@
     <!--        Cucumber -->
     <cucumber.version>7.0.0</cucumber.version>
 
+    <!--        JDI -->
+    <jdi-light-html.version>1.3.17</jdi-light-html.version>
   </properties>
 
   <profiles>
@@ -143,7 +145,6 @@
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
       <version>${assertj-core.version}</version>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -186,6 +187,12 @@
       <artifactId>cucumber-java</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.epam.jdi</groupId>
+      <artifactId>jdi-light-html</artifactId>
+      <version>${jdi-light-html.version}</version>
     </dependency>
 
   </dependencies>
