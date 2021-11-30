@@ -1,5 +1,7 @@
 package com.epam.tc.hw7.pages;
 
+import static com.epam.tc.hw7.JdiSite.metalsAndColorsPage;
+
 import com.epam.jdi.light.elements.common.Label;
 import com.epam.jdi.light.elements.complex.JList;
 import com.epam.jdi.light.elements.composite.WebPage;
@@ -25,7 +27,7 @@ public class MetalsAndColorsPage extends WebPage {
     @UI(".form")
     public MetalAndColorsForm form;
 
-    public static void checkResults(MetalsAndColorsPage metalsAndColorsPage, MetalsAndColorsData metalsAndColorsData) {
+    public void checkResults(MetalsAndColorsData metalsAndColorsData) {
         List<String> results =
             metalsAndColorsPage.resultsList.stream().map(Label::getText).collect(Collectors.toList());
         Assert.assertEquals(results, metalsAndColorsData.expectedResultList());

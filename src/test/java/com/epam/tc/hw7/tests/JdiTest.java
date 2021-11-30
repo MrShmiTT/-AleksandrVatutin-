@@ -3,7 +3,6 @@ package com.epam.tc.hw7.tests;
 import static com.epam.tc.hw7.JdiSite.homePage;
 import static com.epam.tc.hw7.JdiSite.metalsAndColorsPage;
 import static com.epam.tc.hw7.pages.HomePage.metalsAndColorsHeader;
-import static com.epam.tc.hw7.pages.MetalsAndColorsPage.checkResults;
 
 import com.epam.jdi.light.driver.WebDriverUtils;
 import com.epam.jdi.light.elements.init.PageFactory;
@@ -41,7 +40,7 @@ public class JdiTest {
         metalsAndColorsPage.form.check(metalsAndColorsData);
         metalsAndColorsPage.form.submit();
 
-        checkResults(metalsAndColorsPage, metalsAndColorsData);
+        metalsAndColorsPage.checkResults(metalsAndColorsData);
 
         homePage.logout();
     }
