@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "722f641d-a786-40a1-808f-66e13a23e599",
+		"name": "hw8-AleksandrVatutin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create board",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var brdName = pm.variables.replaceIn('{{$randomFirstName}}') + \"'s board\";\r",
+							"pm.collectionVariables.set(\"boardName\", brdName);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"boardID\", jsonData[\"id\"]);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name contains 's board'\", function () {\r",
+							"    pm.response.text().includes(\"'s board\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Board has ID\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Board name has proper name\", function () {\r",
+							"    var expected = pm.collectionVariables.get(\"boardName\");\r",
+							"    var actual = pm.response.json().name;\r",
+							"    pm.expect(actual).to.eql(expected)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{boardName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{trelloUrl}}/1/boards/?name={{boardName}}",
+					"host": [
+						"{{trelloUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{boardName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update board",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body includes 'updated'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"updated\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Board has proper ID\", function () {\r",
+							"    pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"boardID\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{boardName}} updated\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{trelloUrl}}/1/boards/{{boardID}}",
+					"host": [
+						"{{trelloUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assert new board name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response includes updated board name\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"updated\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Board ID is correct\", function () {\r",
+							"    pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"boardID\"));\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trelloUrl}}/1/boards/{{boardID}}",
+					"host": [
+						"{{trelloUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Value is null\", function () {\r",
+							"pm.expect(pm.response.json()._value).to.eql(null);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is correct\", function () {\r",
+							"pm.response.to.have.jsonBody(\"_value\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trelloUrl}}/1/boards/{{boardID}}",
+					"host": [
+						"{{trelloUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assert board deleting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has correct answer\", function () {\r",
+							"    pm.sendRequest(\"The requested resource was not found.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response not found\", function () {\r",
+							"    pm.response.to.be.notFound;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trelloUrl}}/1/boards/{{boardID}}",
+					"host": [
+						"{{trelloUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth1",
+		"oauth1": [
+			{
+				"key": "consumerSecret",
+				"value": "{{trelloKeySecret}}",
+				"type": "string"
+			},
+			{
+				"key": "token",
+				"value": "{{trelloToken}}",
+				"type": "string"
+			},
+			{
+				"key": "consumerKey",
+				"value": "{{trelloKey}}",
+				"type": "string"
+			},
+			{
+				"key": "signatureMethod",
+				"value": "HMAC-SHA1",
+				"type": "string"
+			},
+			{
+				"key": "version",
+				"value": "1.0",
+				"type": "string"
+			},
+			{
+				"key": "addParamsToHeader",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "addEmptyParamsToSign",
+				"value": false,
+				"type": "boolean"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "trelloKey",
+			"value": "1035d7ba52c68e724d87cf52b4a2eeaf"
+		},
+		{
+			"key": "trelloToken",
+			"value": "0fa6b970d0abe5848b254053870ced7dcf6e31a0f52d8d28f91a52c7c549fc09"
+		},
+		{
+			"key": "trelloUrl",
+			"value": "https://api.trello.com"
+		},
+		{
+			"key": "trelloKeySecret",
+			"value": "e88f9f2cc9484678645bf4634241aa260778d81cb70ab1b8f0d85aa528b843d4"
+		},
+		{
+			"key": "boardName",
+			"value": ""
+		},
+		{
+			"key": "boardID",
+			"value": ""
+		}
+	]
+}
