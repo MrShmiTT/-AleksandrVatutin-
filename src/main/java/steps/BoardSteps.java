@@ -8,6 +8,7 @@ import static util.Constants.BOARD_URI;
 import beans.Board;
 import io.qameta.allure.Step;
 import io.restassured.http.Method;
+import io.restassured.response.Response;
 
 public class BoardSteps {
 
@@ -17,8 +18,10 @@ public class BoardSteps {
             requestBuilder()
                 .setMethod(Method.POST)
                 .setName(BOARD_NAME)
+                .addQueryParam("defaultLists", "false")
                 .buildRequest()
-                .sendRequest(BOARD_URI));
+                .sendRequest(BOARD_URI)
+        );
     }
 
     @Step("Get board")
@@ -28,7 +31,16 @@ public class BoardSteps {
                 .setMethod(Method.GET)
                 .setId(id)
                 .buildRequest()
-                .sendRequest(BOARD_URI + id));
+                .sendRequest(BOARD_URI + id)
+        );
+    }
+
+    @Step("Get response")
+    public static Response getResponseStep(String id) {
+        return requestBuilder()
+            .setMethod(Method.GET)
+            .buildRequest()
+            .sendRequest(BOARD_URI + id);
     }
 
     @Step("Update board")
@@ -38,7 +50,8 @@ public class BoardSteps {
                 .setMethod(Method.PUT)
                 .setName(name)
                 .buildRequest()
-                .sendRequest(BOARD_URI + id));
+                .sendRequest(BOARD_URI + id)
+        );
     }
 
     @Step("Delete board by ID")

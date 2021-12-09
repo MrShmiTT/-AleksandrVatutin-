@@ -6,6 +6,7 @@ import static util.Constants.KEY;
 import static util.Constants.TOKEN;
 
 import beans.Board;
+import beans.Lists;
 import com.google.gson.Gson;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -16,7 +17,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.apache.http.HttpStatus;
 import org.openqa.selenium.json.TypeToken;
@@ -67,8 +67,18 @@ public class ServiceObject {
             return this;
         }
 
+        public ApiRequestBuilder setBoardId(String id) {
+            parameters.put("idBoard", id);
+            return this;
+        }
+
         public ServiceObject buildRequest() {
             return new ServiceObject(parameters, requestMethod);
+        }
+
+        public ApiRequestBuilder addQueryParam(String paramName, String paramValue) {
+            parameters.put(paramName, paramValue);
+            return this;
         }
     }
     //End Builder
@@ -82,7 +92,7 @@ public class ServiceObject {
             .prettyPeek();
     }
 
-    private RequestSpecification requestSpecification() {
+    public RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
             .setContentType(ContentType.JSON)
             .setAccept(ContentType.JSON)
@@ -90,7 +100,7 @@ public class ServiceObject {
             .build();
     }
 
-    private static ResponseSpecification goodResponseSpecification() {
+    public static ResponseSpecification goodResponseSpecification() {
         return new ResponseSpecBuilder()
             .expectContentType(ContentType.JSON)
             .expectResponseTime(lessThan(10000L))
@@ -98,7 +108,7 @@ public class ServiceObject {
             .build();
     }
 
-    private static ResponseSpecification badResponseSpecification() {
+    public static ResponseSpecification badResponseSpecification() {
         return new ResponseSpecBuilder()
             .expectContentType(ContentType.JSON)
             .expectResponseTime(lessThan(10000L))
@@ -112,9 +122,9 @@ public class ServiceObject {
             }.getType());
     }
 
-    public static List<Board> getListOfBoards(Response response) {
+    public static Lists getList(Response response) {
         return new Gson()
-            .fromJson(response.asString().trim(), new TypeToken<List<Board>>() {
+            .fromJson(response.asString().trim(), new TypeToken<Lists>() {
             }.getType());
     }
 }
