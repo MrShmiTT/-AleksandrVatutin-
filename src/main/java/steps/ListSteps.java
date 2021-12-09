@@ -8,8 +8,6 @@ import static util.Constants.LIST_URI;
 import beans.Lists;
 import io.qameta.allure.Step;
 import io.restassured.http.Method;
-import io.restassured.response.Response;
-import service.ServiceObject;
 
 public class ListSteps {
 
@@ -23,16 +21,6 @@ public class ListSteps {
             .buildRequest()
             .sendRequest(LIST_URI)
         );
-    }
-
-    @Step("Get response")
-    public static Response getResponseStep(String id) {
-        Response response = requestBuilder()
-            .setMethod(Method.GET)
-            .buildRequest()
-            .sendRequest(LIST_URI + id);
-        response.then().assertThat().spec(ServiceObject.goodResponseSpecification());
-        return response;
     }
 
     @Step("Update list")

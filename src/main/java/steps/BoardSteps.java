@@ -24,17 +24,6 @@ public class BoardSteps {
         );
     }
 
-    @Step("Get board")
-    public static Board getBoardStep(String id) {
-        return getBoard(
-            requestBuilder()
-                .setMethod(Method.GET)
-                .setId(id)
-                .buildRequest()
-                .sendRequest(BOARD_URI + id)
-        );
-    }
-
     @Step("Get response")
     public static Response getResponseStep(String id) {
         return requestBuilder()
@@ -43,7 +32,7 @@ public class BoardSteps {
             .sendRequest(BOARD_URI + id);
     }
 
-    @Step("Update board")
+    @Step("Update board name")
     public static Board changeBoardNameStep(String id, String name) {
         return getBoard(
             requestBuilder()

@@ -5,7 +5,6 @@ public class Board {
 
     private String id;
     private String name;
-    private String desc;
 
     public String getId() {
         return id;
@@ -21,13 +20,5 @@ public class Board {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 }

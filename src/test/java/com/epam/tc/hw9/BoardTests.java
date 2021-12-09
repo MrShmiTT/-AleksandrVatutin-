@@ -4,13 +4,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
-import static service.ServiceObject.requestBuilder;
-import static util.Constants.KEY;
 import static util.Constants.NEW_BOARD_NAME;
-import static util.Constants.TOKEN;
 
 import beans.Board;
-import io.restassured.http.Method;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import steps.BoardSteps;

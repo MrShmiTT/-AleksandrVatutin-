@@ -23,7 +23,6 @@ import org.openqa.selenium.json.TypeToken;
 
 public class ServiceObject {
 
-    private static long requestNumber = 0L;
     private Method requestMethod;
     private Map<String, String> parameters;
 
@@ -48,12 +47,6 @@ public class ServiceObject {
 
         public ApiRequestBuilder setMethod(Method method) {
             requestMethod = method;
-            return this;
-        }
-
-        public ApiRequestBuilder setCredentials(String key, String token) {
-            parameters.put("key", key);
-            parameters.put("token", token);
             return this;
         }
 
@@ -105,14 +98,6 @@ public class ServiceObject {
             .expectContentType(ContentType.JSON)
             .expectResponseTime(lessThan(10000L))
             .expectStatusCode(HttpStatus.SC_OK)
-            .build();
-    }
-
-    public static ResponseSpecification badResponseSpecification() {
-        return new ResponseSpecBuilder()
-            .expectContentType(ContentType.JSON)
-            .expectResponseTime(lessThan(10000L))
-            .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
             .build();
     }
 
