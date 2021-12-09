@@ -1,0 +1,22 @@
+{
+    "name": "First Board",
+    "id": "61ab3d5a524c2287859e7057",
+    "desc": "",
+    "idOrganization": "619b0f46933a616e29e0b121",
+    "url": "https://trello.com/b/Wzn8gnIU/first-board",
+    "shortLink": "Wzn8gnIU",
+    "idMemberCreator": "619b0f4138790349cefdf3a1",
+    "descData": null,
+    "closed": false,
+    "dateClosed": null,
+    "idEnterprise": null,
+    "limits": null,
+    "pinned": null,
+    "dateLastActivity": null,
+    "datePluginDisable": null,
+    "creationMethod": "automatic",
+    "ixUpdate": null,
+    "enterpriseOwned": false,
+    "idBoardSource": null,
+    "starred": false
+}
